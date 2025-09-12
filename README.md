@@ -1,5 +1,7 @@
 # 🧠 LeetCode SQL50 Solutions
 
+![SQL Logo](images/sql_logo.png)
+
 This repository contains solutions to selected LeetCode SQL50 problems. Each solution includes the problem statement, SQL solution, and a link to the official LeetCode problem.
 
 ---
