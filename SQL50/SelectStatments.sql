@@ -1,4 +1,15 @@
 -- ==========================================================
+-- 🧠 LeetCode SQL50 Solutions
+-- ==========================================================
+
+-- 📑 TABLE OF CONTENTS:
+-- 1️⃣ [Problem 1757 - Recyclable and Low Fat Products](#-leetcode-sql50---problem-1757)
+-- 2️⃣ [Problem 584 - Find Customer Referee](#-leetcode-sql50---problem-584)
+-- 3️⃣ [Problem 595 - Big Countries](#-leetcode-sql50---problem-595)
+-- 4️⃣ [Problem 1148 - Article Views I](#-leetcode-sql50---problem-1148)
+-- 5️⃣ [Invalid Tweets](#-leetcode-sql50---problem-invalid-tweets)
+
+-- ==========================================================
 -- 🟢 LeetCode SQL50 - Problem 1757
 -- 🔗 Link: https://leetcode.com/problems/recyclable-and-low-fat-products/
 -- ==========================================================
@@ -44,3 +55,73 @@ SELECT name
 FROM Customer
 WHERE referee_id <> 2 
    OR referee_id IS NULL;
+
+
+-- ==========================================================
+-- 🟢 LeetCode SQL50 - Problem 595
+-- 🔗 Link: https://leetcode.com/problems/big-countries/
+-- ==========================================================
+
+-- 📌 PROBLEM STATEMENT:
+-- A country is considered big if:
+-- 1️⃣ It has an area of at least 3,000,000 (km²), OR
+-- 2️⃣ It has a population of at least 25,000,000.
+-- Write a solution to find the name, population, and area of the big countries.
+-- Return the result table in any order.
+
+-- 📊 TABLE SCHEMA:
+-- World(name VARCHAR, continent VARCHAR, area INT, population INT, gdp BIGINT)
+
+-- ==========================================================
+-- ✅ SOLUTION:
+-- ==========================================================
+
+SELECT name, population, area
+FROM World
+WHERE area >= 3000000
+   OR population >= 25000000;
+
+
+-- ==========================================================
+-- 🟢 LeetCode SQL50 - Problem 1148
+-- 🔗 Link: https://leetcode.com/problems/article-views-i/
+-- ==========================================================
+
+-- 📌 PROBLEM STATEMENT:
+-- Find all authors who have viewed at least one of their own articles.
+-- Return the result table sorted by id in ascending order.
+
+-- 📊 TABLE SCHEMA:
+-- Views(article_id INT, author_id INT, viewer_id INT, view_date DATE)
+
+-- ==========================================================
+-- ✅ SOLUTION:
+-- ==========================================================
+
+SELECT DISTINCT author_id AS id
+FROM Views
+WHERE author_id = viewer_id
+ORDER BY author_id ASC;
+
+
+-- ==========================================================
+-- 🟢 LeetCode SQL50 - Problem (Invalid Tweets)
+-- 🔗 Link: https://leetcode.com/problems/invalid-tweets/
+-- ==========================================================
+
+-- 📌 PROBLEM STATEMENT:
+-- A tweet is considered invalid if the number of characters in its content
+-- is strictly greater than 15.
+-- Write a solution to find the IDs of the invalid tweets.
+-- Return the result table in any order.
+
+-- 📊 TABLE SCHEMA:
+-- Tweets(tweet_id INT, content VARCHAR)
+
+-- ==========================================================
+-- ✅ SOLUTION:
+-- ==========================================================
+
+SELECT tweet_id
+FROM Tweets
+WHERE CHAR_LENGTH(content) > 15;
