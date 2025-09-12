@@ -1,10 +1,3 @@
-# 🧠 LeetCode SQL50 Solutions  
-
----
-
-## 🟢 Problem 1757: Recyclable and Low Fat Products  
-
-```sql
 -- ==========================================================
 -- 🟢 LeetCode SQL50 - Problem 1757
 -- 🔗 Link: https://leetcode.com/problems/recyclable-and-low-fat-products/
@@ -29,13 +22,6 @@ WHERE low_fats = 'Y'
   AND recyclable = 'Y';
 
 
-
-# 🟢 LeetCode SQL50 - Problem 584  
-🔗 [Problem Link](https://leetcode.com/problems/find-customer-referee/)
-
----
-
-```sql
 -- ==========================================================
 -- 🟢 LeetCode SQL50 - Problem 584
 -- 🔗 Link: https://leetcode.com/problems/find-customer-referee/
@@ -58,4 +44,3 @@ SELECT name
 FROM Customer
 WHERE referee_id <> 2 
    OR referee_id IS NULL;
-
