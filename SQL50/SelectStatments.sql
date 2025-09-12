@@ -1,15 +1,14 @@
-# 🧠 LeetCode SQL50 Solutions  
+-- ==========================================================
+-- 🧠 LeetCode SQL50 Solutions
+-- ==========================================================
 
-## 📑 Table of Contents  
-- [🟢 Problem 1757: Recyclable and Low Fat Products](#-leetcode-sql50---problem-1757)  
-- [🟢 Problem 584: Find Customer Referee](#-leetcode-sql50---problem-584)  
-- [🟢 Problem 595: Big Countries](#-leetcode-sql50---problem-595)  
-- [🟢 Problem 1148: Article Views I](#-leetcode-sql50---problem-1148)  
-- [🟢 Problem: Invalid Tweets](#-leetcode-sql50---problem-invalid-tweets)  
+-- 📑 TABLE OF CONTENTS:
+-- 1️⃣ [Problem 1757 - Recyclable and Low Fat Products](#-leetcode-sql50---problem-1757)
+-- 2️⃣ [Problem 584 - Find Customer Referee](#-leetcode-sql50---problem-584)
+-- 3️⃣ [Problem 595 - Big Countries](#-leetcode-sql50---problem-595)
+-- 4️⃣ [Problem 1148 - Article Views I](#-leetcode-sql50---problem-1148)
+-- 5️⃣ [Invalid Tweets](#-leetcode-sql50---problem-invalid-tweets)
 
----
-
-```sql
 -- ==========================================================
 -- 🟢 LeetCode SQL50 - Problem 1757
 -- 🔗 Link: https://leetcode.com/problems/recyclable-and-low-fat-products/
