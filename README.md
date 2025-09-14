@@ -87,6 +87,56 @@ WHERE CHAR_LENGTH(content) > 15;
 
 ---
 
+## 📌 Questions & Solutions
+
+### 6️⃣ **1378. Replace Employee ID With The Unique Identifier**
+Show the unique ID of each employee. If a user does not have a unique ID, display `NULL`.
+
+```sql
+SELECT emp1.unique_id, emp.name
+FROM employees AS emp
+LEFT JOIN employeeUNI AS emp1
+ON emp.id = emp1.id;
+```
+
+7️⃣ 1068. Product Sales Analysis I
+
+Report the product_name, year, and price for each sale.
+
+```sql
+SELECT pro.product_name, sal.year, sal.price
+FROM sales AS sal
+JOIN product AS pro
+ON sal.product_id = pro.product_id;
+```
+
+8️⃣ 1581. Customer Who Visited but Did Not Make Any Transactions
+
+Find the IDs of users who visited without making any transactions and how many such visits they made.
+
+```sql
+SELECT vis.customer_id, COUNT(vis.customer_id) AS count_no_trans
+FROM visits AS vis
+LEFT JOIN transactions AS tran
+ON vis.visit_id = tran.visit_id
+WHERE tran.transaction_id IS NULL
+GROUP BY vis.customer_id;
+```
+
+9️⃣ 197. Rising Temperature
+
+Find all ids where the temperature is higher than the previous day.
+
+```sql
+SELECT w1.id
+FROM Weather w1
+JOIN Weather w2
+ON w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY)
+WHERE w1.temperature > w2.temperature;
+```
+
+
+
 **Author:** Shanmukha Sai Bada
 This repository is part of my portfolio demonstrating SQL problem-solving skills for data analyst roles.
 
