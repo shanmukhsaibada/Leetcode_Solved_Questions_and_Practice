@@ -6,6 +6,8 @@ This repository contains solutions to selected LeetCode SQL50 problems. Each sol
 
 ---
 
+## 📌 Questions & Solutions
+
 ## 1️⃣ Problem 1757 - Recyclable and Low Fat Products
 
 🔗 [LeetCode Link](https://leetcode.com/problems/recyclable-and-low-fat-products/)
@@ -87,7 +89,6 @@ WHERE CHAR_LENGTH(content) > 15;
 
 ---
 
-## 📌 Questions & Solutions
 
 ### 6️⃣ **1378. Replace Employee ID With The Unique Identifier**
 Show the unique ID of each employee. If a user does not have a unique ID, display `NULL`.
