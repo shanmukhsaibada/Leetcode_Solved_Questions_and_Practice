@@ -136,6 +136,97 @@ WHERE w1.temperature > w2.temperature;
 ```
 ---
 
+🔟 Problem 1661 - Average Time of Process per Machine
+
+🔗 LeetCode Link
+
+Problem: Find the average time each machine takes to complete a process.
+
+Solution:
+
+SELECT 
+    a.machine_id,
+    ROUND(AVG(b.timestamp - a.timestamp), 3) AS processing_time
+FROM Activity a
+JOIN Activity b
+  ON a.machine_id = b.machine_id
+ AND a.process_id = b.process_id
+ AND a.activity_type = 'start'
+ AND b.activity_type = 'end'
+GROUP BY a.machine_id;
+
+1️⃣1️⃣ Problem 577 - Employee Bonus
+
+🔗 LeetCode Link
+
+Problem: Report the name and bonus amount of each employee with a bonus < 1000 (or NULL).
+
+Solution:
+
+SELECT emp.name, bon.bonus
+FROM employee AS emp
+LEFT JOIN bonus AS bon 
+ON emp.empID = bon.empId
+WHERE bon.bonus < 1000 OR bon.bonus IS NULL;
+
+1️⃣2️⃣ Problem 1280 - Students and Examinations
+
+🔗 LeetCode Link
+
+Problem: Find number of times each student attended each exam.
+
+Solution:
+
+SELECT 
+    stu.student_id, 
+    stu.student_name, 
+    sub.subject_name, 
+    COUNT(exa.student_id) AS attended_exams
+FROM students AS stu
+CROSS JOIN subjects AS sub
+LEFT JOIN examinations AS exa
+    ON stu.student_id = exa.student_id
+    AND sub.subject_name = exa.subject_name
+GROUP BY stu.student_id, sub.subject_name, stu.student_name
+ORDER BY stu.student_id, sub.subject_name;
+
+1️⃣3️⃣ Problem 570 - Managers with at Least 5 Direct Reports
+
+🔗 LeetCode Link
+
+Problem: Find managers who have at least five direct reports.
+
+Solution:
+
+SELECT e.name
+FROM employee AS e
+JOIN employee AS e1 
+ON e.id = e1.managerID
+GROUP BY e.id, e.name
+HAVING COUNT(e1.id) >= 5;
+
+1️⃣4️⃣ Problem 1934 - Confirmation Rate
+
+🔗 LeetCode Link
+
+Problem: Find the confirmation rate of each user (confirmed / total requests).
+
+Solution:
+
+SELECT 
+    s.user_id,
+    ROUND(
+        IFNULL(SUM(CASE WHEN c.action = 'confirmed' THEN 1 ELSE 0 END) / COUNT(c.user_id), 0),
+        2
+    ) AS confirmation_rate
+FROM Signups s
+LEFT JOIN Confirmations c
+ON s.user_id = c.user_id
+GROUP BY s.user_id;
+
+
+Author: Shanmukha Sai Bada
+Connect With Me: LinkedIn
 <!-- Continue with Problems 10-50 following same format -->
 
 ---
