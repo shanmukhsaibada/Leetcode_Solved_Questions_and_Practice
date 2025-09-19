@@ -64,3 +64,100 @@ FROM Weather w1
 JOIN Weather w2
 ON w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY)
 WHERE w1.temperature > w2.temperature;
+
+-- ==========================================================
+-- 🟢 LeetCode SQL50 - Problem 1661
+-- 🔗 Link: https://leetcode.com/problems/average-time-of-process-per-machine/
+-- ==========================================================
+
+-- 📌 PROBLEM: Average Time of Process per Machine
+-- Find the average time each machine takes to complete a process.
+
+SELECT 
+    a.machine_id,
+    ROUND(AVG(b.timestamp - a.timestamp), 3) AS processing_time
+FROM Activity a
+JOIN Activity b
+  ON a.machine_id = b.machine_id
+ AND a.process_id = b.process_id
+ AND a.activity_type = 'start'
+ AND b.activity_type = 'end'
+GROUP BY a.machine_id;
+
+
+-- ==========================================================
+-- 🟢 LeetCode SQL50 - Problem 577
+-- 🔗 Link: https://leetcode.com/problems/employee-bonus/
+-- ==========================================================
+
+-- 📌 PROBLEM: Employee Bonus
+-- Report the name and bonus amount of each employee with a bonus less than 1000 or no bonus.
+
+SELECT 
+    emp.name, 
+    bon.bonus
+FROM employee AS emp
+LEFT JOIN bonus AS bon 
+    ON emp.empID = bon.empId
+WHERE bon.bonus < 1000 
+   OR bon.bonus IS NULL;
+
+
+-- ==========================================================
+-- 🟢 LeetCode SQL50 - Problem 1280
+-- 🔗 Link: https://leetcode.com/problems/students-and-examinations/
+-- ==========================================================
+
+-- 📌 PROBLEM: Students and Examinations
+-- Find the number of times each student attended each exam.
+
+SELECT 
+    stu.student_id, 
+    stu.student_name, 
+    sub.subject_name, 
+    COUNT(exa.student_id) AS attended_exams
+FROM students AS stu
+CROSS JOIN subjects AS sub
+LEFT JOIN examinations AS exa
+    ON stu.student_id = exa.student_id
+    AND sub.subject_name = exa.subject_name
+GROUP BY stu.student_id, sub.subject_name, stu.student_name
+ORDER BY stu.student_id, sub.subject_name;
+
+
+-- ==========================================================
+-- 🟢 LeetCode SQL50 - Problem 570
+-- 🔗 Link: https://leetcode.com/problems/managers-with-at-least-5-direct-reports/
+-- ==========================================================
+
+-- 📌 PROBLEM: Managers with at Least 5 Direct Reports
+-- Find managers who have at least five direct reports.
+
+SELECT 
+    e.name
+FROM employee AS e
+JOIN employee AS e1 
+    ON e.id = e1.managerID
+GROUP BY e.id, e.name
+HAVING COUNT(e1.id) >= 5;
+
+
+-- ==========================================================
+-- 🟢 LeetCode SQL50 - Problem 1934
+-- 🔗 Link: https://leetcode.com/problems/confirmation-rate/
+-- ==========================================================
+
+-- 📌 PROBLEM: Confirmation Rate
+-- Find the confirmation rate of each user (confirmed requests / total requests).
+
+SELECT 
+    s.user_id,
+    ROUND(
+        IFNULL(SUM(CASE WHEN c.action = 'confirmed' THEN 1 ELSE 0 END) / COUNT(c.user_id), 0),
+        2
+    ) AS confirmation_rate
+FROM Signups s
+LEFT JOIN Confirmations c
+    ON s.user_id = c.user_id
+GROUP BY s.user_id;
+
